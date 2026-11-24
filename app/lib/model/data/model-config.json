@@ -1,0 +1,521 @@
+{
+  "version": 3,
+  "updatedAt": "2026-11-24T05:30:19.773Z",
+  "topologies": [
+    {
+      "topologyId": "space",
+      "name": "空间拓扑",
+      "kind": "space",
+      "isPrimary": true,
+      "description": "园区 / 楼栋 / 楼层 / 房间；分项占比取自主口径拓扑",
+      "scenario": "office"
+    },
+    {
+      "topologyId": "metering",
+      "name": "计量接线拓扑",
+      "kind": "metering",
+      "isPrimary": false,
+      "description": "进线 → 楼层配电 → 末端表；用于总分表对账",
+      "scenario": null
+    },
+    {
+      "topologyId": "system",
+      "name": "用能系统拓扑",
+      "kind": "system",
+      "isPrimary": false,
+      "description": "空调 / 照明 / 动力 / 给水；用于按系统看用量",
+      "scenario": null
+    }
+  ],
+  "nodes": [
+    {
+      "nodeId": "sp-park-a",
+      "topologyId": "space",
+      "parentId": null,
+      "name": "A 园区",
+      "level": "园区"
+    },
+    {
+      "nodeId": "sp-b1",
+      "topologyId": "space",
+      "parentId": "sp-park-a",
+      "name": "1 号楼",
+      "level": "楼栋"
+    },
+    {
+      "nodeId": "sp-b1-3f",
+      "topologyId": "space",
+      "parentId": "sp-b1",
+      "name": "3 层",
+      "level": "楼层"
+    },
+    {
+      "nodeId": "sp-b1-4f",
+      "topologyId": "space",
+      "parentId": "sp-b1",
+      "name": "4 层",
+      "level": "楼层"
+    },
+    {
+      "nodeId": "sp-b1-5f",
+      "topologyId": "space",
+      "parentId": "sp-b1",
+      "name": "5 层",
+      "level": "楼层"
+    },
+    {
+      "nodeId": "sp-b2",
+      "topologyId": "space",
+      "parentId": "sp-park-a",
+      "name": "2 号楼",
+      "level": "楼栋"
+    },
+    {
+      "nodeId": "sp-b2-1f",
+      "topologyId": "space",
+      "parentId": "sp-b2",
+      "name": "1 层",
+      "level": "楼层"
+    },
+    {
+      "nodeId": "md-b1",
+      "topologyId": "metering",
+      "parentId": null,
+      "name": "1 号楼进线",
+      "level": "进线"
+    },
+    {
+      "nodeId": "md-b1-3f",
+      "topologyId": "metering",
+      "parentId": "md-b1",
+      "name": "3 层配电箱",
+      "level": "配电箱"
+    },
+    {
+      "nodeId": "md-b1-4f",
+      "topologyId": "metering",
+      "parentId": "md-b1",
+      "name": "4 层配电箱",
+      "level": "配电箱"
+    },
+    {
+      "nodeId": "md-b1-5f",
+      "topologyId": "metering",
+      "parentId": "md-b1",
+      "name": "5 层配电箱",
+      "level": "配电箱"
+    },
+    {
+      "nodeId": "md-b2",
+      "topologyId": "metering",
+      "parentId": null,
+      "name": "2 号楼进线",
+      "level": "进线"
+    },
+    {
+      "nodeId": "md-b2-1f",
+      "topologyId": "metering",
+      "parentId": "md-b2",
+      "name": "1 层配电箱",
+      "level": "配电箱"
+    },
+    {
+      "nodeId": "sys-hvac",
+      "topologyId": "system",
+      "parentId": null,
+      "name": "空调系统",
+      "level": "系统"
+    },
+    {
+      "nodeId": "sys-lighting",
+      "topologyId": "system",
+      "parentId": null,
+      "name": "照明系统",
+      "level": "系统"
+    },
+    {
+      "nodeId": "sys-power",
+      "topologyId": "system",
+      "parentId": null,
+      "name": "动力与插座",
+      "level": "系统"
+    },
+    {
+      "nodeId": "sys-water",
+      "topologyId": "system",
+      "parentId": null,
+      "name": "给水系统",
+      "level": "系统"
+    },
+    {
+      "nodeId": "sys-other",
+      "topologyId": "system",
+      "parentId": null,
+      "name": "其他系统（新）",
+      "level": "系统"
+    }
+  ],
+  "meters": [
+    {
+      "meterId": "M-B1-E-TOT",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-1001",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": null,
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-3F-E1",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-1101",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": "hvac",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-3F-E2",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-1102",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": "lighting",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-3F-E3",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-1103",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": "power",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-4F-E1",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-1201",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": "hvac-fan",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-4F-E2",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-1202",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": "socket",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-5F-E1",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-1301",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": "lighting",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-W-TOT",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-W-1001",
+      "energyType": "water",
+      "unit": "m3",
+      "digitCount": null,
+      "categoryId": null,
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-3F-W",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-W-1101",
+      "energyType": "water",
+      "unit": "m3",
+      "digitCount": null,
+      "categoryId": "water",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-4F-W",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-W-1201",
+      "energyType": "water",
+      "unit": "m3",
+      "digitCount": null,
+      "categoryId": "water",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B1-5F-W",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-W-1301",
+      "energyType": "water",
+      "unit": "m3",
+      "digitCount": null,
+      "categoryId": "water",
+      "status": "active"
+    },
+    {
+      "meterId": "M-B2-E-TOT",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-2001",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": 4,
+      "categoryId": null,
+      "status": "active"
+    },
+    {
+      "meterId": "M-B2-1F-E1",
+      "sourceSystem": "upstream-meters",
+      "externalMeterId": "EXT-E-2101",
+      "energyType": "electric",
+      "unit": "kWh",
+      "digitCount": null,
+      "categoryId": "hvac",
+      "status": "active"
+    }
+  ],
+  "bindings": [
+    {
+      "meterId": "M-B1-E-TOT",
+      "topologyId": "space",
+      "nodeId": "sp-b1"
+    },
+    {
+      "meterId": "M-B1-W-TOT",
+      "topologyId": "space",
+      "nodeId": "sp-b1"
+    },
+    {
+      "meterId": "M-B1-3F-E1",
+      "topologyId": "space",
+      "nodeId": "sp-b1-3f"
+    },
+    {
+      "meterId": "M-B1-3F-E2",
+      "topologyId": "space",
+      "nodeId": "sp-b1-3f"
+    },
+    {
+      "meterId": "M-B1-3F-E3",
+      "topologyId": "space",
+      "nodeId": "sp-b1-3f"
+    },
+    {
+      "meterId": "M-B1-3F-W",
+      "topologyId": "space",
+      "nodeId": "sp-b1-3f"
+    },
+    {
+      "meterId": "M-B1-4F-E1",
+      "topologyId": "space",
+      "nodeId": "sp-b1-4f"
+    },
+    {
+      "meterId": "M-B1-4F-E2",
+      "topologyId": "space",
+      "nodeId": "sp-b1-4f"
+    },
+    {
+      "meterId": "M-B1-4F-W",
+      "topologyId": "space",
+      "nodeId": "sp-b1-4f"
+    },
+    {
+      "meterId": "M-B1-5F-E1",
+      "topologyId": "space",
+      "nodeId": "sp-b1-5f"
+    },
+    {
+      "meterId": "M-B1-5F-W",
+      "topologyId": "space",
+      "nodeId": "sp-b1-5f"
+    },
+    {
+      "meterId": "M-B2-E-TOT",
+      "topologyId": "space",
+      "nodeId": "sp-b2"
+    },
+    {
+      "meterId": "M-B2-1F-E1",
+      "topologyId": "space",
+      "nodeId": "sp-b2-1f"
+    },
+    {
+      "meterId": "M-B1-E-TOT",
+      "topologyId": "metering",
+      "nodeId": "md-b1"
+    },
+    {
+      "meterId": "M-B1-W-TOT",
+      "topologyId": "metering",
+      "nodeId": "md-b1"
+    },
+    {
+      "meterId": "M-B1-3F-E1",
+      "topologyId": "metering",
+      "nodeId": "md-b1-3f"
+    },
+    {
+      "meterId": "M-B1-3F-E2",
+      "topologyId": "metering",
+      "nodeId": "md-b1-3f"
+    },
+    {
+      "meterId": "M-B1-3F-E3",
+      "topologyId": "metering",
+      "nodeId": "md-b1-3f"
+    },
+    {
+      "meterId": "M-B1-3F-W",
+      "topologyId": "metering",
+      "nodeId": "md-b1-3f"
+    },
+    {
+      "meterId": "M-B1-4F-E1",
+      "topologyId": "metering",
+      "nodeId": "md-b1-4f"
+    },
+    {
+      "meterId": "M-B1-4F-E2",
+      "topologyId": "metering",
+      "nodeId": "md-b1-4f"
+    },
+    {
+      "meterId": "M-B1-4F-W",
+      "topologyId": "metering",
+      "nodeId": "md-b1-4f"
+    },
+    {
+      "meterId": "M-B1-5F-E1",
+      "topologyId": "metering",
+      "nodeId": "md-b1-5f"
+    },
+    {
+      "meterId": "M-B1-5F-W",
+      "topologyId": "metering",
+      "nodeId": "md-b1-5f"
+    },
+    {
+      "meterId": "M-B2-E-TOT",
+      "topologyId": "metering",
+      "nodeId": "md-b2"
+    },
+    {
+      "meterId": "M-B2-1F-E1",
+      "topologyId": "metering",
+      "nodeId": "md-b2-1f"
+    },
+    {
+      "meterId": "M-B1-3F-E1",
+      "topologyId": "system",
+      "nodeId": "sys-hvac"
+    },
+    {
+      "meterId": "M-B1-4F-E1",
+      "topologyId": "system",
+      "nodeId": "sys-hvac"
+    },
+    {
+      "meterId": "M-B2-1F-E1",
+      "topologyId": "system",
+      "nodeId": "sys-hvac"
+    },
+    {
+      "meterId": "M-B1-3F-E2",
+      "topologyId": "system",
+      "nodeId": "sys-lighting"
+    },
+    {
+      "meterId": "M-B1-5F-E1",
+      "topologyId": "system",
+      "nodeId": "sys-lighting"
+    },
+    {
+      "meterId": "M-B1-3F-E3",
+      "topologyId": "system",
+      "nodeId": "sys-power"
+    },
+    {
+      "meterId": "M-B1-4F-E2",
+      "topologyId": "system",
+      "nodeId": "sys-power"
+    },
+    {
+      "meterId": "M-B1-3F-W",
+      "topologyId": "system",
+      "nodeId": "sys-water"
+    },
+    {
+      "meterId": "M-B1-4F-W",
+      "topologyId": "system",
+      "nodeId": "sys-water"
+    },
+    {
+      "meterId": "M-B1-5F-W",
+      "topologyId": "system",
+      "nodeId": "sys-water"
+    },
+    {
+      "meterId": "M-B1-W-TOT",
+      "topologyId": "system",
+      "nodeId": "sys-other"
+    }
+  ],
+  "categories": [
+    {
+      "categoryId": "hvac",
+      "parentId": null,
+      "name": "暖通空调",
+      "level": 1
+    },
+    {
+      "categoryId": "lighting",
+      "parentId": null,
+      "name": "照明",
+      "level": 1
+    },
+    {
+      "categoryId": "power",
+      "parentId": null,
+      "name": "动力",
+      "level": 1
+    },
+    {
+      "categoryId": "socket",
+      "parentId": null,
+      "name": "插座与办公设备",
+      "level": 1
+    },
+    {
+      "categoryId": "water",
+      "parentId": null,
+      "name": "给水",
+      "level": 1
+    },
+    {
+      "categoryId": "other",
+      "parentId": null,
+      "name": "其他",
+      "level": 1
+    },
+    {
+      "categoryId": "hvac-fan",
+      "parentId": "hvac",
+      "name": "空调风机",
+      "level": 2
+    }
+  ]
+}

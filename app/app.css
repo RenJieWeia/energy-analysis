@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/*
+ * 设计令牌（Lead 建立，名字冻结）。
+ * worker-beta 可以「追加」令牌或调整色值，但不许删除/重命名已有令牌名，
+ * 因为其他页面已按这些名字写类名。
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* 字体 */
+  --font-sans:
+    "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, monospace;
+
+  /* 基底 */
+  --color-bg: #f4f6fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef2f8;
+  --color-surface-3: #e4eaf3;
+  --color-line: #dde4ee;
+  --color-line-strong: #c2cddd;
+
+  /* 文本 */
+  --color-fg: #0e1726;
+  --color-fg-muted: #566682;
+  --color-fg-subtle: #8593a9;
+  --color-fg-inverse: #ffffff;
+
+  /* 品牌 */
+  --color-brand: #1f6feb;
+  --color-brand-strong: #1757c2;
+  --color-brand-soft: #e7f0ff;
+  --color-brand-fg: #ffffff;
+  --color-accent: #0fa89b;
+  --color-accent-soft: #e2f7f4;
+
+  /* 语义 */
+  --color-success: #178a53;
+  --color-success-soft: #e3f6ec;
+  --color-warning: #b57208;
+  --color-warning-soft: #fdf1dc;
+  --color-danger: #cc3535;
+  --color-danger-soft: #fdeaea;
+  --color-info: #2c74c9;
+  --color-info-soft: #e6f0fd;
+
+  /* 尖峰平谷（图表固定配色，图例文案见字典表） */
+  --color-tariff-sharp: #cc3535;
+  --color-tariff-peak: #e07a1f;
+  --color-tariff-flat: #2c74c9;
+  --color-tariff-valley: #178a53;
+
+  /* 图表序列色（1→8 顺序使用） */
+  --color-series-1: #1f6feb;
+  --color-series-2: #0fa89b;
+  --color-series-3: #e07a1f;
+  --color-series-4: #7a5af8;
+  --color-series-5: #cc3535;
+  --color-series-6: #2c9ad8;
+  --color-series-7: #8b6f2f;
+  --color-series-8: #4f6272;
+
+  /* 圆角 */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* 阴影：内容区只用这两级 */
+  --shadow-card: 0 1px 2px 0 rgb(14 23 38 / 0.06);
+  --shadow-pop: 0 8px 24px -8px rgb(14 23 38 / 0.24);
+}
+
+.dark {
+  --color-bg: #0a1018;
+  --color-surface: #111a25;
+  --color-surface-2: #16212e;
+  --color-surface-3: #1d2a39;
+  --color-line: #22303f;
+  --color-line-strong: #33455a;
+
+  --color-fg: #e7eefa;
+  --color-fg-muted: #9db0c8;
+  --color-fg-subtle: #6f8298;
+  --color-fg-inverse: #0a1018;
+
+  --color-brand: #4c9bff;
+  --color-brand-strong: #74b2ff;
+  --color-brand-soft: #12253d;
+  --color-brand-fg: #06101d;
+  --color-accent: #2ec8b6;
+  --color-accent-soft: #0f2b29;
+
+  --color-success: #3fbb7d;
+  --color-success-soft: #10281d;
+  --color-warning: #e0a13a;
+  --color-warning-soft: #2c2113;
+  --color-danger: #f2685f;
+  --color-danger-soft: #2e1618;
+  --color-info: #6aa9ea;
+  --color-info-soft: #122234;
+
+  --color-tariff-sharp: #f2685f;
+  --color-tariff-peak: #e8a341;
+  --color-tariff-flat: #6aa9ea;
+  --color-tariff-valley: #3fbb7d;
+
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-pop: 0 8px 24px -8px rgb(0 0 0 / 0.7);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "tnum" 1;
+  }
+
+  /* 数字统一等宽对齐，避免计数变化导致宽度跳动 */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
